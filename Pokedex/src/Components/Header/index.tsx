@@ -9,7 +9,7 @@ export const Header = () => {
                 <a href="#">Home</a>
                 <a href="#">Pokédex</a>
                 <a href="#">Legendaries</a>
-                <a href="#">Documentarion</a>
+                <a href="#">Documentation</a>
             </article>
         </header>
     )

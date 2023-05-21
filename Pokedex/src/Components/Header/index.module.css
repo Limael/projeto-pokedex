@@ -27,3 +27,27 @@
     color: #000000;
 
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1007px) {
+    .navbar_container {
+        gap: 43px;
+        display: flex;
+    }
+
+    .img {
+        width: 111px;
+    }
+
+    .navbar_container a {
+        font-size: 22px;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 767px) {
+    .navbar_container {
+        display: none;
+    }
+}
