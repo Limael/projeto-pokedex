@@ -1,0 +1,29 @@
+.header {
+    background-color: var(--yellow);
+    height: 93px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px 4px 16px rgba(1, 28, 64, 0.2);
+
+}
+
+.img {
+    width: 159px;
+}
+
+.navbar_container {
+    gap: 70px;
+    display: flex;
+}
+
+.navbar_container a {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 29px;
+    text-decoration: none;
+    color: #000000;
+
+}
