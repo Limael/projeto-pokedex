@@ -15,7 +15,7 @@ export const Header = () => {
         <header className={styles.header}>
             <img className={styles.img} src={logo} alt="Logo principal do sistema" />
             <article className={styles.navbar_container}>
-                <a href="#">Home</a>
+                <a href="#" className={styles.navbar_item_selected} >Home</a>
                 <a href="#">Pokédex</a>
                 <a href="#">Legendaries</a>
                 <a href="#">Documentation</a>
