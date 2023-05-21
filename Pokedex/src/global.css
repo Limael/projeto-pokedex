@@ -4,6 +4,8 @@
 :root {
   --yellow: #F5DB13;
 
+  --yellow-gradient: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
+
   --danger: #E25858;
 
 }
