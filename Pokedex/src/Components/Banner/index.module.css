@@ -18,7 +18,7 @@
     font-family: 'Karla';
     font-style: normal;
     font-weight: 400;
-    font-size: 42px;
+    font-size: 72px;
     line-height: 84px;
     letter-spacing: 4px;
 
@@ -135,17 +135,23 @@
     }
 
     .title {
-        width: 730px;
+        width: 368px;
+        font-size: 42px;
+        line-height: 49px;
         text-align: center;
     }
 
     .information {
         text-align: center;
-        width: 639px;
+        width: 322.13px;
+        font-size: 24px;
+        line-height: 28px;
     }
 
     .button {
         margin-top: calc(33px - 6px);
+        width: 312.8px;
+        height: 55.11px;
     }
 
 }
