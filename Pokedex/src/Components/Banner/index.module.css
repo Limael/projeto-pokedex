@@ -1,10 +1,11 @@
 .section_container {
-    background: var(--yellow-gradient);
     min-height: auto;
     display: flex;
     justify-content: end;
     align-items: center;
     min-height: calc(100vh - 93px);
+    background: var(--yellow-gradient);
+    flex-wrap: wrap;
 }
 
 .information_container {
@@ -25,6 +26,8 @@
     color: #000000;
 
 }
+
+
 
 .information {
     font-family: 'Karla';
@@ -54,7 +57,7 @@
 }
 
 .image {
-    width: 57%;
+    width: 59%;
 }
 
 .image_responsive {
@@ -99,6 +102,8 @@
     .information {
         text-align: center;
         width: 639px;
+        font-size: 24px;
+        line-height: 28px;
     }
 
     .button {
@@ -111,8 +116,10 @@
 
 
 @media only screen and (max-width: 767px) {
+
     .section_container {
         justify-content: flex-start;
+        min-height: calc(100vh - 55.8px);
     }
 
     .information_container {
