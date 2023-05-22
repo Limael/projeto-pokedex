@@ -3,10 +3,11 @@ import styles from './index.module.css'
 import {
     Menu,
     MenuButton,
-    MenuList,  
+    MenuList,
     MenuItemOption,
     MenuOptionGroup,
     Button,
+    SimpleGrid,
 
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
@@ -18,14 +19,14 @@ export const Pokedex = () => {
         <>
             <Header />
             <section className={styles.section_container}>
-                <main>
-                    <h1>
-                        800 Pokemons for you to choose your favorite
+                <main className={styles.pokedex_container}>
+                    <h1 className={styles.pokemon_quantity}>
+                         800 <strong>Pokemons</strong> for you to choose your favorite
                     </h1>
 
-                    <input type="text" placeholder='Encontre o seu pokemon' />
+                    <input className={styles.input} type="text" placeholder='Encontre o seu pokemon' />
 
-                    <div>
+                    <div className={styles.filter_section}>
                         <Menu closeOnSelect={false}>
                             <MenuButton as={Button} >
                                 MenuItem
@@ -65,8 +66,25 @@ export const Pokedex = () => {
                     </div>
 
 
-                        <CardPokemon/>
-        
+                    <SimpleGrid columns={[2, null, 3]} spacing='34px'>
+                        <CardPokemon />
+                        <CardPokemon />
+                        <CardPokemon />
+
+
+                        <CardPokemon />
+                        <CardPokemon />
+                        <CardPokemon />
+                    </SimpleGrid>
+
+
+
+
+
+
+
+
+
 
                 </main>
                 {/*                <Footer/>

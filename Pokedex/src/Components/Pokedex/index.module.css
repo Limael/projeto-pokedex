@@ -1,3 +1,8 @@
+.pokedex_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .section_container {
     min-height: auto;
     display: flex;
@@ -5,5 +10,59 @@
     align-items: center;
     min-height: calc(100vh - 93px);
     background: #FFFFFF;
+    padding-top: 73px;
 }
 
+
+.section_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.pokemon_quantity {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 41px;
+    /* identical to box height */
+
+    text-align: center;
+    letter-spacing: 3px;
+
+    color: #000000;
+
+}
+
+
+.filter_section{
+    gap: 64px;
+    display: flex;
+    margin-bottom: 52px;
+    align-self: baseline;
+    margin-top: 36px;
+    margin-left: 70px;
+
+}
+.input {
+    background: linear-gradient(180deg, #FFFFFF 30.32%, #F5F5F5 100%);
+    background: #F2F2F2;
+    box-shadow: 4px 4px 16px rgba(1, 28, 64, 0.2);
+    border-radius: 40px;
+    width: 88%;
+    height: 53px;
+    padding-left: 31px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: rgba(33, 33, 33, 0.8);
+    margin-top: 34px;
+}
