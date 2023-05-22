@@ -1,6 +1,5 @@
 
-import { Banner } from './Components/Banner'
-import { Header } from './Components/Header'
+import { Pokedex } from './Components/Pokedex'
 
 
 function App() {
@@ -8,8 +7,8 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Banner />
+
+      <Pokedex />
 
     </>
   )
