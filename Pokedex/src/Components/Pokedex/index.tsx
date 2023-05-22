@@ -8,7 +8,6 @@ import {
     MenuOptionGroup,
     Button,
     SimpleGrid,
-    Box,
 
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
@@ -40,6 +39,8 @@ export const Pokedex = () => {
         fetchPokemonTypes();
     }, []);
 
+
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -68,7 +69,7 @@ export const Pokedex = () => {
                             <MenuButton as={Button}  >
                                 MenuItem
                             </MenuButton>
-                            <MenuList minWidth='240px'>
+                            <MenuList maxHeight="15rem" overflowY="scroll">
                                 <MenuOptionGroup type='checkbox'>
                                     {pokemonTypes.map((type) => (
                                         <MenuItemOption key={type.name} value={type.name}>
