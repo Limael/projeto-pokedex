@@ -76,6 +76,7 @@
 @media only screen and (max-width: 767px) {
     .header {
         height: 55.8px;
+        gap: 50%;
     }
 
     .navbar_container {

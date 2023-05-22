@@ -1,0 +1,19 @@
+.badge_container{
+    background: #73D677;
+box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
+border-radius: 11px;
+width: 60px;
+height: 16px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.badge_text{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+    color: #212121;
+    
+}
