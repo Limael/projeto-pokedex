@@ -1,11 +1,13 @@
 import banner from '../../assets/banner.png'
 import banner_complete from '../../assets/BannerComplete.png'
 import { Footer } from '../Footer'
+import { Header } from '../Header'
 import styles from './index.module.css'
 
 export const Banner = () => {
     return (
         <>
+    <Header/>
 
             <section className={styles.section_container}>
                 <img className={styles.image_responsive} src={banner_complete} alt="pikachu" />

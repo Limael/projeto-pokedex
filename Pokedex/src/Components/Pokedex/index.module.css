@@ -66,14 +66,7 @@
 
 @media only screen and (min-width: 1008px) and (max-width: 1357px) {
     .image {
-        
         width: 47%;
-    }
-    .information_container {
-        gap: 32px;
-    }
-    .section_container{
-        min-height: calc(100vh - 93px);
     }
 }
 
