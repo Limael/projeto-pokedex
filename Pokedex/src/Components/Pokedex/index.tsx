@@ -12,16 +12,33 @@ import {
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { CardPokemon } from '../CardPokemon'
+import { useEffect, useState } from 'react'
+import api from '../../api/api'
+
 
 
 export const Pokedex = () => {
+    const [pokemonList, setPokemonList] = useState([]);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await api.get('/pokemon');
+          setPokemonList(response.data.count);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      fetchData();
+    }, []);
     return (
         <>
             <Header />
             <section className={styles.section_container}>
                 <main className={styles.pokedex_container}>
                     <h1 className={styles.pokemon_quantity}>
-                         800 <strong>Pokemons</strong> for you to choose your favorite
+                    {pokemonList} <strong>Pokemons</strong> for you to choose your favorite
                     </h1>
 
                     <input className={styles.input} type="text" placeholder='Encontre o seu pokemon' />
