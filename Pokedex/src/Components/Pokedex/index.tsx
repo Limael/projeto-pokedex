@@ -10,49 +10,96 @@ import {
     SimpleGrid,
 
 } from '@chakra-ui/react'
-import { ChevronDownIcon } from '@chakra-ui/icons'
-import { CardPokemon } from '../CardPokemon'
 import { useEffect, useState } from 'react'
 import api from '../../api/api'
+import { CardPokemon } from '../CardPokemon'
 
 
+type PokemonType = {
+    name: string;
+    url: string;
+}
 
 export const Pokedex = () => {
     const [pokemonCount, setPokemonCount] = useState([]);
     const [pokemonTypes, setPokemonTypes] = useState<PokemonType[]>([]);
+    const [pokemonList, setPokemonList] = useState<PokemonType[]>([]);
+    const [pokemonDetails, setPokemonDetails] = useState<PokemonType[]>([]);
+    const [pokemonNames, setPokemonNames] = useState<string[]>([]);
 
-    interface PokemonType {
-        name: string;
-        url: string;
-    }
+
+
+    /* 
+        useEffect(() => {
+            const fetchPokemonTypes = async () => {
+                try {
+                    const response = await api.get('/type');
+                    setPokemonTypes(response.data.results);
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+    
+            fetchPokemonTypes();
+        }, []);
+    
+    
+    
+        useEffect(() => {
+            const fetchData = async () => {
+                try {
+                    const response = await api.get('/pokemon');
+                    setPokemonCount(response.data.count);
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+    
+            fetchData();
+        }, []);
+     */
 
     useEffect(() => {
-        const fetchPokemonTypes = async () => {
+        const getPokemon = async () => {
             try {
-                const response = await api.get('/type');
-                setPokemonTypes(response.data.results);
+                const response = await api.get('/pokemon?limit=9');
+                const results = response.data.results;
+                setPokemonList(results);
+
+                const names = results.map((pokemon: PokemonType) => pokemon.name);
+                setPokemonNames(names);
             } catch (error) {
                 console.log(error);
             }
         };
 
-        fetchPokemonTypes();
+        getPokemon();
     }, []);
 
 
 
     useEffect(() => {
-        const fetchData = async () => {
+        const getPokemonDetails = async (pokemonName: string) => {
             try {
-                const response = await api.get('/pokemon');
-                setPokemonCount(response.data.count);
+                const response = await api.get(`/pokemon/${pokemonName}`);
+                const pokemonData = response.data;
+                console.log(pokemonData);
+
+
+
             } catch (error) {
                 console.log(error);
             }
         };
 
-        fetchData();
-    }, []);
+        // Faz uma requisição para cada nome de pokémon
+        pokemonNames.forEach((name) => {
+            getPokemonDetails(name);
+        });
+    }, [pokemonNames]);
+
+
+
     return (
         <>
             <Header />
@@ -84,14 +131,7 @@ export const Pokedex = () => {
 
 
                     <SimpleGrid columns={[2, null, 3]} spacing='34px'>
-                        <CardPokemon />
-                        <CardPokemon />
-                        <CardPokemon />
 
-
-                        <CardPokemon />
-                        <CardPokemon />
-                        <CardPokemon />
                     </SimpleGrid>
 
 
