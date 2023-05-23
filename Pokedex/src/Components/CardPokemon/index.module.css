@@ -58,6 +58,7 @@
     display: flex;
     gap: 14px;
     margin-top: 11px;
+    position: absolute;
 }
 
 .pokemon_container {

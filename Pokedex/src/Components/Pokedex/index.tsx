@@ -52,14 +52,19 @@ export const Pokedex = () => {
               name: data.name,
               attack: data.stats[1].base_stat,
               defense: data.stats[2].base_stat,
-              types: data.types.map((type: { type: { name: string } }) => type.type.name),
+              types: data.types.map((type: { type: { name: string } } & PokemonType) => type.type.name),
               image: data.sprites.other['official-artwork'].front_default,
               onClick: () => handlePokemonClick(data) // Passando o Pokemon completo para o onClick
             };
           })
         );
 
-        setPokemonList((prevList) => [...prevList, ...formattedPokemonList]);
+        if (offset === 0) {
+          setPokemonList(formattedPokemonList);
+        } else {
+          setPokemonList((prevList) => [...prevList, ...formattedPokemonList]);
+        }
+
         setLoading(false);
       } catch (error) {
         console.error('Error fetching Pokemon list:', error);
@@ -80,7 +85,7 @@ export const Pokedex = () => {
 
       const additionalInfo = {
         experience: data.base_experience,
-        abilities: data.abilities.map((ability: { ability: { name: string } }) => ability.ability.name),
+        abilities: data.abilities.map((ability: { ability: { name: string } } & PokemonType) => ability.ability.name),
         // Adicione outras informações que desejar
       };
 
@@ -92,7 +97,7 @@ export const Pokedex = () => {
       setSelectedPokemon(selectedPokemonWithInfo);
       setIsModalOpen(true);
     } catch (error) {
-      console.error('Error fetching Pokemon details:', error);
+      console.error('Error fetching additional Pokemon info:', error);
     }
   };
 
@@ -129,15 +134,7 @@ export const Pokedex = () => {
 
           <SimpleGrid columns={[2, null, 3]} spacing="34px">
             {pokemonList.map((pokemon: PokemonTypeProps, index: number) => (
-              <CardPokemon
-                key={index}
-                name={pokemon.name}
-                attack={pokemon.attack}
-                defense={pokemon.defense}
-                types={pokemon.types}
-                image={pokemon.image}
-                onClick={() => handlePokemonClick(pokemon)}
-              />
+              <CardPokemon key={index} {...pokemon} />
             ))}
           </SimpleGrid>
 
@@ -162,7 +159,7 @@ export const Pokedex = () => {
             <p>Defense: {selectedPokemon?.defense}</p>
             <p>Types: {selectedPokemon?.types.join(', ')}</p>
             <p>Experience: {selectedPokemon?.experience}</p>
-            <p>Abilities: {selectedPokemon?.abilities.join(', ')}</p>
+            {/* Adicione outras informações que desejar */}
             <img src={selectedPokemon?.image} alt={selectedPokemon?.name} />
           </ModalBody>
         </ModalContent>
