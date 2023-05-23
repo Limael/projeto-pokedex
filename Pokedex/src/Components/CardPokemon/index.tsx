@@ -8,15 +8,21 @@ export type PokemonTypeProps = {
   defense: string;
   types: string[];
   image: string;
+  experience?: number;
+  abilities?: string;
+  onClick: () => void;
+
 };
 
-export const CardPokemon = ({ name, attack, defense, types, image }: PokemonTypeProps) => {
+export const CardPokemon = ({ name, attack, defense, types, image, onClick }: PokemonTypeProps) => {
   return (
     <Card
       className={styles.card}
       direction={{ base: 'column', sm: 'row' }}
       overflow='hidden'
       variant='outline'
+      onClick={onClick}
+
     >
       <Stack>
         <CardBody className={styles.card_body}>
