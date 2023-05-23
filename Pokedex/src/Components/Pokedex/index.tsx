@@ -1,14 +1,14 @@
-import { Header } from '../Header'
-import styles from './index.module.css'
-import { Menu, MenuButton, MenuList, MenuItemOption, MenuOptionGroup, Button, SimpleGrid } from '@chakra-ui/react'
-import { useEffect, useState, useRef } from 'react'
-import api from '../../api/api'
-import { CardPokemon, PokemonTypeProps } from '../CardPokemon'
+import { Header } from '../Header';
+import styles from './index.module.css';
+import { Menu, MenuButton, MenuList, MenuItemOption, MenuOptionGroup, Button, SimpleGrid, CircularProgress } from '@chakra-ui/react';
+import { useEffect, useState, useRef } from 'react';
+import api from '../../api/api';
+import { CardPokemon, PokemonTypeProps } from '../CardPokemon';
 
 type PokemonType = {
   name: string;
   url: string;
-}
+};
 
 const PAGE_SIZE = 9;
 
@@ -123,7 +123,7 @@ export const Pokedex = () => {
             ))}
           </SimpleGrid>
 
-          {loading && <p>Loading...</p>}
+          {loading && <CircularProgress mt="4" isIndeterminate color='yellow.300' />}
 
           {!loading && pokemonList.length < pokemonCount && (
             <Button onClick={handleLoadMore} mt="4">
