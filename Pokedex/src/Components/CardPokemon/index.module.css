@@ -52,6 +52,7 @@
     color: #212121!important;
     text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1)!important;
     margin-bottom: 13px!important;
+    text-transform: capitalize;
 }
 
 .types_container {

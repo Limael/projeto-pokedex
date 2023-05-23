@@ -4,6 +4,7 @@ import styles from './index.module.css';
 import { Menu, MenuButton, MenuList, MenuItemOption, MenuOptionGroup, Button, SimpleGrid, CircularProgress, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody } from '@chakra-ui/react';
 import api from '../../api/api';
 import { CardPokemon, PokemonTypeProps } from '../CardPokemon';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 
 type PokemonType = {
   name: string;
@@ -100,7 +101,7 @@ export const Pokedex = () => {
 
           <div className={styles.filter_section}>
             <Menu closeOnSelect={false}>
-              <MenuButton as={Button}>MenuItem</MenuButton>
+              <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>Tipo </MenuButton>
               <MenuList maxHeight="15rem" overflowY="scroll">
                 <MenuOptionGroup type="checkbox">
                   {pokemonTypes.map((type) => (
