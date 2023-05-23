@@ -10,11 +10,11 @@ export type PokemonTypeProps = {
   image: string;
   experience?: number;
   abilities?: string;
-  hp?:number;
-  spAttack?:number;
-  spDefense?:number;
-  generation?:number;
-  index?:number;
+  hp?: number;
+  spAttack?: number;
+  spDefense?: number;
+  generation?: number;
+  index?: number;
 
 
   onClick?: () => void;
@@ -59,8 +59,16 @@ export const CardPokemon = ({ name, attack, defense, types, image, onClick }: Po
         </CardBody>
       </Stack>
 
-      <article className={styles.pokemon_container}>
-        <img src={image} alt={name} />
+      <article className={types.includes('grass') || types.includes('bug') ? styles.pokemon_container_green :
+        types.includes('stile') || types.includes('dark') || types.includes('rock') ? styles.pokemon_container_gray :
+          types.includes('water') || types.includes('water') ? styles.pokemon_container_blue :
+            types.includes('fire') || types.includes('fighting') || types.includes('dragon') ? styles.pokemon_container_red :
+              types.includes('normal') || types.includes('gosth') ? styles.pokemon_container_light_blue :
+                types.includes('poison') || types.includes('psychic') || types.includes('fairy') || types.includes('ghost') ? styles.pokemon_container_purple :
+                  types.includes('ground') ? styles.pokemon_container_brown :
+                    styles.pokemon_container_yellow
+      }>
+        <img className={styles.pokemon_container_img} src={image} alt={name} />
       </article>
     </Card>
   );

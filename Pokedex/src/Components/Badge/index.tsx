@@ -15,7 +15,6 @@ export const Badge = ({ type }: BadgeProps) => {
   type.includes('poison') ||  type.includes('psychic') ||  type.includes('fairy') ||  type.includes('ghost') ? styles.badge_container_purple :
   type.includes('ground') ? styles.badge_container_brown :
    styles.badge_container_yellow
-
  }
   >
 
