@@ -79,30 +79,7 @@ export const Pokedex = () => {
                                 </MenuOptionGroup>
                             </MenuList>
                         </Menu>
-                        <Menu closeOnSelect={false}>
-                            <MenuButton as={Button} >
-                                MenuItem
-                            </MenuButton>
-                            <MenuList minWidth='240px'>
-                                <MenuOptionGroup type='checkbox'>
-                                    <MenuItemOption value='email'>Email</MenuItemOption>
-                                    <MenuItemOption value='phone'>Phone</MenuItemOption>
-                                    <MenuItemOption value='country'>Country</MenuItemOption>
-                                </MenuOptionGroup>
-                            </MenuList>
-                        </Menu>
-                        <Menu closeOnSelect={false}>
-                            <MenuButton as={Button} >
-                                MenuItem
-                            </MenuButton>
-                            <MenuList minWidth='240px'>
-                                <MenuOptionGroup type='checkbox'>
-                                    <MenuItemOption value='email'>Email</MenuItemOption>
-                                    <MenuItemOption value='phone'>Phone</MenuItemOption>
-                                    <MenuItemOption value='country'>Country</MenuItemOption>
-                                </MenuOptionGroup>
-                            </MenuList>
-                        </Menu>
+
                     </div>
 
 
