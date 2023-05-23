@@ -10,7 +10,14 @@ export type PokemonTypeProps = {
   image: string;
   experience?: number;
   abilities?: string;
-  onClick: () => void;
+  hp?:number;
+  spAttack?:number;
+  spDefense?:number;
+  generation?:number;
+  index?:number;
+
+
+  onClick?: () => void;
 
 };
 

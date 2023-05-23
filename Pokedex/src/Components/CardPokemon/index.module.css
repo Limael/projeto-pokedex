@@ -64,10 +64,13 @@
 .pokemon_container {
     background-color: red;
     width: 100%;
-    margin-left: -55px;
+    margin-left: -21px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.pokemon_container img {
+    width: 157px;
 }
 
 .card_body {

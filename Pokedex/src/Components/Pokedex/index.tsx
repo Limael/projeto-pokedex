@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Header } from '../Header';
 import styles from './index.module.css';
-import { Menu, MenuButton, MenuList, MenuItemOption, MenuOptionGroup, Button, SimpleGrid, CircularProgress, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton } from '@chakra-ui/react';
+import { Menu, MenuButton, MenuList, MenuItemOption, MenuOptionGroup, Button, SimpleGrid, CircularProgress, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody } from '@chakra-ui/react';
 import api from '../../api/api';
 import { CardPokemon, PokemonTypeProps } from '../CardPokemon';
 
@@ -18,7 +18,6 @@ export const Pokedex = () => {
   const [pokemonList, setPokemonList] = useState<PokemonTypeProps[]>([]);
   const [offset, setOffset] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const [selectedPokemon, setSelectedPokemon] = useState<PokemonTypeProps | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -78,31 +77,13 @@ export const Pokedex = () => {
     setOffset((prevOffset) => prevOffset + PAGE_SIZE);
   };
 
-  const handlePokemonClick = async (pokemon: PokemonTypeProps) => {
-    try {
-      const response = await api.get(`/pokemon/${pokemon.name}`);
-      const data = response.data;
-
-      const additionalInfo = {
-        experience: data.base_experience,
-        abilities: data.abilities.map((ability: { ability: { name: string } } & PokemonType) => ability.ability.name),
-        // Adicione outras informações que desejar
-      };
-
-      const selectedPokemonWithInfo = {
-        ...pokemon,
-        ...additionalInfo,
-      };
-
-      setSelectedPokemon(selectedPokemonWithInfo);
-      setIsModalOpen(true);
-    } catch (error) {
-      console.error('Error fetching additional Pokemon info:', error);
-    }
+  const handlePokemonClick = (pokemon: PokemonTypeProps) => {
+    
+    setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setSelectedPokemon(null);
+ 
     setIsModalOpen(false);
   };
 
@@ -152,15 +133,10 @@ export const Pokedex = () => {
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{selectedPokemon?.name}</ModalHeader>
+          <ModalHeader></ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <p>Attack: {selectedPokemon?.attack}</p>
-            <p>Defense: {selectedPokemon?.defense}</p>
-            <p>Types: {selectedPokemon?.types.join(', ')}</p>
-            <p>Experience: {selectedPokemon?.experience}</p>
-            {/* Adicione outras informações que desejar */}
-            <img src={selectedPokemon?.image} alt={selectedPokemon?.name} />
+          
           </ModalBody>
         </ModalContent>
       </Modal>
