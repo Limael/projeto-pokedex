@@ -1,8 +1,9 @@
-.pokedex_container{
+.pokedex_container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .section_container {
     min-height: auto;
     display: flex;
@@ -37,7 +38,7 @@
 }
 
 
-.filter_section{
+.filter_section {
     gap: 64px;
     display: flex;
     margin-bottom: 52px;
@@ -46,6 +47,7 @@
     margin-left: 70px;
 
 }
+
 .input {
     background: linear-gradient(180deg, #FFFFFF 30.32%, #F5F5F5 100%);
     background: #F2F2F2;
@@ -66,3 +68,10 @@
     color: rgba(33, 33, 33, 0.8);
     margin-top: 34px;
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1007px) {}
+
+
+
+
+@media only screen and (max-width: 767px) {}

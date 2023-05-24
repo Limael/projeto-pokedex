@@ -45,13 +45,13 @@
 }
 
 .pokemon_name {
-    font-family: 'Karla'!important;
+    font-family: 'Karla' !important;
     font-style: normal !important;
-    font-weight: 700!important;
-    font-size: 18px!important;
-    color: #212121!important;
-    text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1)!important;
-    margin-bottom: 13px!important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    color: #212121 !important;
+    text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1) !important;
+    margin-bottom: 13px !important;
     text-transform: capitalize;
 }
 
@@ -151,4 +151,12 @@
 
 .card_body {
     position: relative;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .card {
+        flex-direction: row !important;
+        margin-bottom: 24px;
+    }
 }
