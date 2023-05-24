@@ -9,7 +9,7 @@ export type PokemonTypeProps = {
   types: string[];
   image: string;
   experience?: number;
-  abilities?: string;
+  abilities?: string[];
   hp?: number;
   spAttack?: number;
   spDefense?: number;
@@ -61,7 +61,7 @@ export const CardPokemon = ({ name, attack, defense, types, image, onClick }: Po
 
       <article className={types.includes('grass') || types.includes('bug') ? styles.pokemon_container_green :
         types.includes('stile') || types.includes('dark') || types.includes('rock') ? styles.pokemon_container_gray :
-          types.includes('water') || types.includes('water') ? styles.pokemon_container_blue :
+          types.includes('water') || types.includes('ice') ? styles.pokemon_container_blue :
             types.includes('fire') || types.includes('fighting') || types.includes('dragon') ? styles.pokemon_container_red :
               types.includes('normal') || types.includes('gosth') ? styles.pokemon_container_light_blue :
                 types.includes('poison') || types.includes('psychic') || types.includes('fairy') || types.includes('ghost') ? styles.pokemon_container_purple :
