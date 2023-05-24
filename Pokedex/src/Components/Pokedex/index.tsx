@@ -199,14 +199,12 @@ export const Pokedex = () => {
                         </Menu>
                     </div>
 
-                    <SimpleGrid columns={[2, null, 3]} spacing="34px">
-                        {searchValue === ''
-                            ? pokemonList.map((pokemon: PokemonTypeProps, index: number) => (
-                                <CardPokemon key={index} {...pokemon} />
-                            ))
-                            : pokemonSearchList.map((pokemon: PokemonTypeProps, index: number) => (
-                                <CardPokemon key={index} {...pokemon} />
-                            ))}
+                    <SimpleGrid columns={[1, null, 2, 3]} spacing={[0, null, '34px']}>
+                        {searchValue === '' ? (
+                            pokemonList.map((pokemon: PokemonTypeProps, index: number) => <CardPokemon key={index} {...pokemon} />)
+                        ) : (
+                            pokemonSearchList.map((pokemon: PokemonTypeProps, index: number) => <CardPokemon key={index} {...pokemon} />)
+                        )}
                     </SimpleGrid>
 
                     {searchValue !== '' ? (<></>) : !loading && pokemonList.length < pokemonCount && (
