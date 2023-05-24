@@ -240,7 +240,7 @@ export const Pokedex = () => {
             </Button>
           )}
 
-          {loading && <CircularProgress mt="4" isIndeterminate color='yellow.300' />}
+          {loading && <CircularProgress my="4" isIndeterminate color='yellow.300' />}
 
 
         </main>
@@ -253,7 +253,7 @@ export const Pokedex = () => {
 
           {selectedPokemon && (
             <>
-              {/* esse cara tambem */}
+   
               <ModalBody className={selectedPokemon.types.includes('grass') || selectedPokemon.types.includes('bug') ? styles.modal_body_green :
                 selectedPokemon.types.includes('grass') || selectedPokemon.types.includes('dark') || selectedPokemon.types.includes('rock') ? styles.modal_body_container_gray :
                 selectedPokemon.types.includes('ice') || selectedPokemon.types.includes('water') ? styles.modal_body_container_blue :
@@ -266,7 +266,6 @@ export const Pokedex = () => {
                 <section className={styles.modal_container}>
 
 
-                  {/* mudar esse cara */}
                   <article className={selectedPokemon.types.includes('grass') || selectedPokemon.types.includes('bug') ? styles.modal_image_container_green :
                     selectedPokemon.types.includes('grass') || selectedPokemon.types.includes('dark') || selectedPokemon.types.includes('rock') ? styles.modal_image_container_gray :
                     selectedPokemon.types.includes('ice') || selectedPokemon.types.includes('water') ? styles.modal_image_container_blue :
@@ -297,7 +296,7 @@ export const Pokedex = () => {
                     </article>
 
                     <article className={styles.container_abilities}>
-                      <span>Abilities</span>
+                      <span className={styles.abilities_title}>Abilities</span>
                       <span>{selectedPokemon.abilities && selectedPokemon.abilities.join(" - ")}</span>
                     </article>
 
