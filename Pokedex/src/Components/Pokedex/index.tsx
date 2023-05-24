@@ -23,6 +23,9 @@ export const Pokedex = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
 
+    const [selectedPokemon, setSelectedPokemon] = useState<PokemonTypeProps | null>(null);
+
+
 
     const [searchValue, setSearchValue] = useState('')
     useEffect(() => {
@@ -38,14 +41,15 @@ export const Pokedex = () => {
                 const response = await api.get(`/pokemon/${searchValue}`);
                 const data = response.data;
 
-                const pokemon = {
+                const pokemon: PokemonTypeProps = {
                     name: data.name,
                     attack: data.stats[1].base_stat,
                     defense: data.stats[2].base_stat,
                     types: data.types.map((type: { type: { name: string } } & PokemonType) => type.type.name),
                     image: data.sprites.other['official-artwork'].front_default,
-                    onClick: () => handlePokemonClick()
+                    onClick: () => handlePokemonClick(pokemon), // <- Passe o Pokémon como argumento
                 };
+
 
                 setPokemonSearchList([pokemon]);
                 setLoading(false);
@@ -128,14 +132,15 @@ export const Pokedex = () => {
                     results.map(async (pokemon: PokemonType) => {
                         const response = await api.get(`/pokemon/${pokemon.name}`);
                         const data = response.data;
-                        return {
+                        const formattedPokemon: PokemonTypeProps = {
                             name: data.name,
                             attack: data.stats[1].base_stat,
                             defense: data.stats[2].base_stat,
                             types: data.types.map((type: { type: { name: string } } & PokemonType) => type.type.name),
                             image: data.sprites.other['official-artwork'].front_default,
-                            onClick: () => handlePokemonClick()
+                            onClick: () => handlePokemonClick(formattedPokemon), // Correção: Passe o Pokémon formatado como argumento
                         };
+                        return formattedPokemon;
                     })
                 );
 
@@ -154,12 +159,13 @@ export const Pokedex = () => {
         fetchPokemonList();
     }, [offset]);
 
+
     const handleLoadMore = () => {
         setOffset((prevOffset) => prevOffset + PAGE_SIZE);
     };
 
-    const handlePokemonClick = () => {
-
+    const handlePokemonClick = (pokemon: PokemonTypeProps) => {
+        setSelectedPokemon(pokemon);
         setIsModalOpen(true);
     };
 
@@ -201,9 +207,13 @@ export const Pokedex = () => {
 
                     <SimpleGrid columns={[1, null, 2, 3]} spacing={[0, null, '34px']}>
                         {searchValue === '' ? (
-                            pokemonList.map((pokemon: PokemonTypeProps, index: number) => <CardPokemon key={index} {...pokemon} />)
+                            pokemonList.map((pokemon: PokemonTypeProps, index: number) => (
+                                <CardPokemon key={index} {...pokemon} onClick={() => handlePokemonClick(pokemon)} />
+                            ))
                         ) : (
-                            pokemonSearchList.map((pokemon: PokemonTypeProps, index: number) => <CardPokemon key={index} {...pokemon} />)
+                            pokemonSearchList.map((pokemon: PokemonTypeProps, index: number) => (
+                                <CardPokemon key={index} {...pokemon} onClick={() => handlePokemonClick(pokemon)} />
+                            ))
                         )}
                     </SimpleGrid>
 
@@ -219,17 +229,27 @@ export const Pokedex = () => {
                 </main>
             </section>
 
-            {/* Modal */}
             <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader></ModalHeader>
+                    <ModalHeader>Modal Title</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-
+                        {selectedPokemon && (
+                            <>
+                                <h2>{selectedPokemon.name}</h2>
+                                <p>Attack: {selectedPokemon.attack}</p>
+                                <p>Defense: {selectedPokemon.defense}</p>
+                                <p>Types: {selectedPokemon.types.join(', ')}</p>
+                                <img src={selectedPokemon.image} alt={selectedPokemon.name} />
+                            </>
+                        )}
                     </ModalBody>
+
+
                 </ModalContent>
             </Modal>
+
         </>
     );
 };
