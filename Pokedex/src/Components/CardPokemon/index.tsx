@@ -9,7 +9,7 @@ export type PokemonTypeProps = {
   types: string[];
   image: string;
   experience?: number;
-  abilities?: string;
+  abilities?: string[];
   hp?: number;
   spAttack?: number;
   spDefense?: number;

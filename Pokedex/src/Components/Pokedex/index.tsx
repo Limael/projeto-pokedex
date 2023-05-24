@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Header } from '../Header';
 import styles from './index.module.css';
-import { Menu, MenuButton, MenuList, Button, SimpleGrid, CircularProgress, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, MenuItem, Checkbox } from '@chakra-ui/react';
+import { Menu, MenuButton, MenuList, Button, SimpleGrid, CircularProgress, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, MenuItem, Checkbox, Progress } from '@chakra-ui/react';
 import api from '../../api/api';
 import { CardPokemon, PokemonTypeProps } from '../CardPokemon';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import { Badge } from '../Badge';
 
 type PokemonType = {
   name: string;
@@ -54,6 +55,7 @@ export const Pokedex = () => {
           experience: data.base_experience,
           generation: data.game_indices[0].version.url.split('/').slice(-2, -1)[0],
           index: data.id,
+          abilities: data.abilities.map((ability: { ability: { name: string } }) => ability.ability.name),
 
         };
 
@@ -152,6 +154,7 @@ export const Pokedex = () => {
               experience: data.base_experience,
               generation: data.game_indices[0].version.url.split('/').slice(-2, -1)[0],
               index: data.id,
+              abilities: data.abilities.map((ability: { ability: { name: string } }) => ability.ability.name),
 
             };
             return formattedPokemon;
@@ -243,22 +246,88 @@ export const Pokedex = () => {
         </main>
       </section>
 
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+      <Modal size={'xl'} isCentered isOpen={isModalOpen} onClose={handleCloseModal}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
+        <ModalContent className={styles.modal}>
+          <ModalCloseButton className={styles.modal_close} />
+          <ModalBody className={styles.modal_body} py={0} px={0}>
             {selectedPokemon && (
               <>
-                <strong>{selectedPokemon.index}</strong>
-                <h2>{selectedPokemon.name}</h2>
-                <p>Attack: {selectedPokemon.attack}</p>
-                <p>Defense: {selectedPokemon.defense}</p>
-                <p>SpAttack: {selectedPokemon.spAttack}</p>
-                <p>SpDefense: {selectedPokemon.spDefense}</p>
-                <p>Types: {selectedPokemon.types.join(', ')}</p>
-                <img src={selectedPokemon.image} alt={selectedPokemon.name} />
+                <section className={styles.modal_container}>
+
+                  <article className={styles.modal_image_container}>
+                    <img className={styles.modal_image} src={selectedPokemon.image} alt={selectedPokemon.name} />
+                    <article className={styles.types_container}>
+                      {selectedPokemon.types.map((type, index) => (
+                        <Badge key={index} type={[type]} />
+                      ))}
+                    </article>
+                  </article>
+
+                  <article className={styles.modal_information_container}>
+                    <article className={styles.information_header}>
+                      <h2 className={styles.modal_header}>{selectedPokemon.name}</h2>
+                      <article className={styles.generation_container}>
+                        <span className={styles.generation}>Generation {selectedPokemon.generation}</span>
+                        <div className={styles.index_container}>
+                          <span>
+                            {selectedPokemon.index}
+                          </span>
+                        </div>
+                      </article>
+                    </article>
+
+                    <article className={styles.container_abilities}>
+                      <span>Abilities</span>
+                      <span>{selectedPokemon.abilities && selectedPokemon.abilities.join(" - ")}</span>
+                    </article>
+
+                    <article className={styles.container_base_stats}>
+                      <article className={styles.base_stats}>
+                        <span>Hp</span>
+                        <span><strong>{selectedPokemon.hp}</strong></span>
+                        <Progress className={styles.progress_bar} colorScheme='green' value={selectedPokemon.hp} />
+                      </article>
+                      <article className={styles.base_stats}>
+                        <span>Experience</span>
+                        <span> <strong> {selectedPokemon.experience} </strong></span>
+                        <Progress className={styles.progress_bar} colorScheme='yellow' value={selectedPokemon.experience} />
+                      </article>
+                    </article>
+
+                    <div className={styles.stats_cards_container}>
+
+                      <article className={styles.stats_container}>
+                        <div className={styles.black_circle}>
+                          <span>{selectedPokemon.defense}</span>
+                        </div>
+                        <p>Defense</p>
+
+                      </article>
+                      <article className={styles.stats_container}>
+                        <div className={styles.black_circle}>
+                          <span>{selectedPokemon.attack}</span>
+                        </div>
+                        <p>Attack</p>
+                      </article>
+                      <article className={styles.stats_container}>
+                        <div className={styles.black_circle}>
+                          <span>{selectedPokemon.spDefense}</span>
+                        </div>
+                        <p>SpDefense</p>
+                      </article>
+                      <article className={styles.stats_container}>
+                        <div className={styles.black_circle}>
+                          <span>{selectedPokemon.spAttack}</span>
+                        </div>
+                        <p>spAttack</p>
+                      </article>
+
+                    </div>
+
+                  </article>
+
+                </section>
               </>
             )}
           </ModalBody>
