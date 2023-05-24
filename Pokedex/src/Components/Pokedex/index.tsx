@@ -250,12 +250,31 @@ export const Pokedex = () => {
         <ModalOverlay />
         <ModalContent className={styles.modal}>
           <ModalCloseButton className={styles.modal_close} />
-          <ModalBody className={styles.modal_body} py={0} px={0}>
-            {selectedPokemon && (
-              <>
+
+          {selectedPokemon && (
+            <>
+              {/* esse cara tambem */}
+              <ModalBody className={selectedPokemon.types.includes('grass') || selectedPokemon.types.includes('bug') ? styles.modal_body_green :
+                selectedPokemon.types.includes('grass') || selectedPokemon.types.includes('dark') || selectedPokemon.types.includes('rock') ? styles.modal_body_container_gray :
+                selectedPokemon.types.includes('ice') || selectedPokemon.types.includes('water') ? styles.modal_body_container_blue :
+                selectedPokemon.types.includes('fire') || selectedPokemon.types.includes('fighting') || selectedPokemon.types.includes('dragon') ? styles.modal_body_container_red :
+                selectedPokemon.types.includes('normal') || selectedPokemon.types.includes('gosth') ? styles.modal_body_container_light_blue :
+                selectedPokemon.types.includes('poison') || selectedPokemon.types.includes('psychic') || selectedPokemon.types.includes('fairy') || selectedPokemon.types.includes('ghost') ? styles.modal_body_container_purple :
+                selectedPokemon.types.includes('ground')? styles.modal_body_container_brown :
+                 styles.modal_body_container_yellow} py={0} px={0}>
+
                 <section className={styles.modal_container}>
 
-                  <article className={styles.modal_image_container}>
+
+                  {/* mudar esse cara */}
+                  <article className={selectedPokemon.types.includes('grass') || selectedPokemon.types.includes('bug') ? styles.modal_image_container_green :
+                    selectedPokemon.types.includes('grass') || selectedPokemon.types.includes('dark') || selectedPokemon.types.includes('rock') ? styles.modal_image_container_gray :
+                    selectedPokemon.types.includes('ice') || selectedPokemon.types.includes('water') ? styles.modal_image_container_blue :
+                    selectedPokemon.types.includes('fire') || selectedPokemon.types.includes('fighting') || selectedPokemon.types.includes('dragon') ? styles.modal_image_container_red :
+                    selectedPokemon.types.includes('normal') || selectedPokemon.types.includes('gosth') ? styles.modal_image_container_light_blue :
+                    selectedPokemon.types.includes('poison') || selectedPokemon.types.includes('psychic') || selectedPokemon.types.includes('fairy') || selectedPokemon.types.includes('ghost') ? styles.modal_image_container_purple :
+                    selectedPokemon.types.includes('ground')? styles.modal_image_container_brown :
+                   styles.modal_image_container_yellow}>
                     <img className={styles.modal_image} src={selectedPokemon.image} alt={selectedPokemon.name} />
                     <article className={styles.types_container}>
                       {selectedPokemon.types.map((type, index) => (
@@ -328,10 +347,11 @@ export const Pokedex = () => {
                   </article>
 
                 </section>
-              </>
-            )}
-          </ModalBody>
 
+
+              </ModalBody>
+            </>
+          )}
 
         </ModalContent>
       </Modal>
