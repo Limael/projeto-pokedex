@@ -5,13 +5,12 @@ import './global.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import { Pokedex } from './Components/Pokedex/index.js'
-import { Banner } from './Components/Banner/index.js'
 import { Legendaries } from './Components/Legendaries/index.js'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Banner />,
+    element: <App />,
   },
   {
     path: "pokedex",
