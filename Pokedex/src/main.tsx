@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 
 import { Banner } from './Components/Banner/index.tsx'
 import { Pokedex } from './Components/Pokedex/index.tsx'
+import { Legendaries } from './Components/Legendaries/index.tsx'
 
 
 const router = createBrowserRouter([
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
 
   {
     path: "/legendaries",
-    element: <Pokedex />,
+    element: <Legendaries />,
     errorElement: <Banner />
   },
 
