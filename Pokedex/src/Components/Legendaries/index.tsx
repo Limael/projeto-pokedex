@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Header } from "../Header";
 import { LegendariesSection, PokemonProps } from "../LegendariesSection";
 import api from "../../api/api";
+import styles from './index.module.css';
+
 
 interface FlavorTextEntry {
   flavor_text: string;
@@ -63,18 +65,20 @@ export const Legendaries = () => {
   return (
     <>
       <Header />
-      <LegendariesSection
-        title="Legendaries"
-        img={legendaryPokemon?.sprites.other['official-artwork'].front_default}
-        pokemonName={legendaryPokemon?.name}
-        pokemonDescription={pokemonDescription}
-        hp={getStatValue(legendaryPokemon, 'hp')}
-        experience={getStatValue(legendaryPokemon, 'experience')}
-        attack={getStatValue(legendaryPokemon, 'attack')}
-        defense={getStatValue(legendaryPokemon, 'defense')}
-        spAttack={getStatValue(legendaryPokemon, 'special-attack')}
-        spDefense={getStatValue(legendaryPokemon, 'special-defense')}
-      />
+      <section className={styles.section_container}>
+        <LegendariesSection
+          title="Legendaries"
+          img={legendaryPokemon?.sprites.other['official-artwork'].front_default}
+          pokemonName={legendaryPokemon?.name}
+          pokemonDescription={pokemonDescription}
+          hp={getStatValue(legendaryPokemon, 'hp')}
+          experience={getStatValue(legendaryPokemon, 'experience')}
+          attack={getStatValue(legendaryPokemon, 'attack')}
+          defense={getStatValue(legendaryPokemon, 'defense')}
+          spAttack={getStatValue(legendaryPokemon, 'special-attack')}
+          spDefense={getStatValue(legendaryPokemon, 'special-defense')}
+        />
+      </section>
     </>
   );
 };
