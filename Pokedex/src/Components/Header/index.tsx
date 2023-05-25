@@ -9,17 +9,18 @@ import {
 
 
 } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
     return (
         <header className={styles.header}>
 
-            <img className={styles.img} src={logo} alt="Logo principal do sistema" />
+            <Link to="/"> <img className={styles.img} src={logo} alt="Logo principal do sistema" /></Link>
             <article className={styles.navbar_container}>
-                <a href="#" className={styles.navbar_item_selected} >Home</a>
-                <a href="#">Pokédex</a>
-                <a href="#">Legendaries</a>
-                <a href="#">Documentation</a>
+                <a href="#" className={styles.navbar_item_selected} > <Link to="/">Home </Link></a>
+                <a href="#"> <Link to="/pokedex">Pokédex</Link></a>
+                <a href="#"><Link to="/legendaries">Legendaries</Link></a>
+                <a href="https://pokeapi.co/docs/v2#pokemon-section">Documentation</a>
             </article>
 
             <article className={styles.hamburger_container}>
