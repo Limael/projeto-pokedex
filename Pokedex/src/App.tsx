@@ -1,5 +1,5 @@
 
-import { Pokedex } from './Components/Pokedex'
+import { Legendaries } from './Components/Legendaries'
 
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
 
-      <Pokedex />
+      <Legendaries />
 
     </>
   )
