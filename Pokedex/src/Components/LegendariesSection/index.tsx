@@ -1,3 +1,4 @@
+import styles from './index.module.css';
 import { Progress, SimpleGrid } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import api from "../../api/api";
@@ -110,47 +111,47 @@ export const LegendariesSection = ({ title, img, pokemonName, pokemonDescription
 
   return (
     <>
-      <section>
-        <h1>{title}</h1>
-        <hr />
+      <section className={styles.section_legendaries}>
+        <h1 className={styles.title}>{title}</h1>
+        <hr className={styles.divider} />
 
-        <div>
+        <div className={styles.legendary_information_container}>
           <img src={img} alt="" />
 
           <article>
-            <h1>{pokemonName}</h1>
-            <p>{pokemonDescription}</p>
+            <h1 className={styles.legendary_name}>{pokemonName}</h1>
+            <p className={styles.legendary_description}>{pokemonDescription}</p>
             <SimpleGrid columns={[1, null, 2, 2]} spacing={[0, null, '34px']}>
 
-              <article>
-                <span>Healthy Points</span>
-                <span><strong>{hp}</strong></span>
-                <Progress colorScheme='yellow' value={10} />
+              <article className={styles.stats_container}>
+                <span className={styles.legendary_stats}>Healthy Points</span>
+                <span><strong className={styles.legendary_stats_number}>{hp}</strong></span>
+                <Progress className={styles.progresso} colorScheme='yellow' value={hp} />
               </article>
-              <article>
-                <span>Experience</span>
-                <span><strong>{experience}</strong></span>
-                <Progress colorScheme='yellow' value={10} />
+              <article className={styles.stats_container}>
+                <span className={styles.legendary_stats}>Experience</span>
+                <span><strong className={styles.legendary_stats_number}>{experience}</strong></span>
+                <Progress className={styles.progresso} colorScheme='yellow' value={experience} />
               </article>
-              <article>
-                <span>Attack</span>
-                <span><strong>{attack}</strong></span>
-                <Progress colorScheme='yellow' value={10} />
+              <article className={styles.stats_container}>
+                <span className={styles.legendary_stats}>Attack</span>
+                <span><strong className={styles.legendary_stats_number}>{attack}</strong></span>
+                <Progress className={styles.progresso} colorScheme='yellow' value={attack} />
               </article>
-              <article>
-                <span>Defense</span>
-                <span><strong>{defense}</strong></span>
-                <Progress colorScheme='yellow' value={10} />
+              <article className={styles.stats_container}>
+                <span className={styles.legendary_stats}>Defense</span>
+                <span><strong className={styles.legendary_stats_number}>{defense}</strong></span>
+                <Progress className={styles.progresso} colorScheme='yellow' value={defense} />
               </article>
-              <article>
-                <span>SpAttack</span>
-                <span><strong>{spAttack}</strong></span>
-                <Progress colorScheme='yellow' value={10} />
+              <article className={styles.stats_container}>
+                <span className={styles.legendary_stats}>SpAttack</span>
+                <span><strong className={styles.legendary_stats_number}>{spAttack}</strong></span>
+                <Progress className={styles.progresso} colorScheme='yellow' value={spAttack} />
               </article>
-              <article>
-                <span>SpDefense</span>
-                <span><strong>{spDefense}</strong></span>
-                <Progress colorScheme='yellow' value={10} />
+              <article className={styles.stats_container}>
+                <span className={styles.legendary_stats}>SpDefense</span>
+                <span><strong className={styles.legendary_stats_number}>{spDefense}</strong></span>
+                <Progress className={styles.progresso} colorScheme='yellow' value={spDefense} />
               </article>
 
 
