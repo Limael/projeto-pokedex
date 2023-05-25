@@ -16,11 +16,7 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <Banner />
   },
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <Banner />
-  },
+
   {
     path: "/pokedex",
     element: <Pokedex />,
