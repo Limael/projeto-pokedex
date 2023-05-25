@@ -6,8 +6,8 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",

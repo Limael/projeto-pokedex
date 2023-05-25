@@ -1,5 +1,5 @@
 
-import { Pokedex } from './Components/Pokedex'
+import { Banner } from './Components/Banner/index'
 
 
 function App() {
@@ -7,9 +7,7 @@ function App() {
 
   return (
     <>
-
-      <Pokedex />
-
+      <Banner />
     </>
   )
 }
