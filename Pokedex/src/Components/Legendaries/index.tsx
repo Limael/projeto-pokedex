@@ -4,7 +4,6 @@ import { LegendariesSection, PokemonProps } from "../LegendariesSection";
 import api from "../../api/api";
 import styles from './index.module.css';
 
-
 interface FlavorTextEntry {
   flavor_text: string;
   language: {
@@ -13,7 +12,6 @@ interface FlavorTextEntry {
 }
 
 export const Legendaries = () => {
-
   const [legendaryPokemon, setLegendaryPokemon] = useState<PokemonProps | null>(null);
   const [pokemonDescription, setPokemonDescription] = useState<string>('');
 
@@ -55,29 +53,38 @@ export const Legendaries = () => {
   }, []);
 
   const getStatValue = (pokemon: PokemonProps | null, statName: string): number | undefined => {
-    if (statName === 'experience') {
-      return pokemon?.base_experience;
+    if (!pokemon) {
+      return undefined;
     }
 
-    return pokemon?.stats.find((stat) => stat.stat.name === statName)?.base_stat;
+    if (statName === 'experience') {
+      return pokemon.base_experience;
+    }
+
+    const stat = pokemon.stats.find((stat) => stat.stat.name === statName);
+    return stat?.base_stat;
   };
 
   return (
     <>
       <Header />
       <section className={styles.section_container}>
-        <LegendariesSection
-          title="Legendaries"
-          img={legendaryPokemon?.sprites.other['official-artwork'].front_default}
-          pokemonName={legendaryPokemon?.name}
-          pokemonDescription={pokemonDescription}
-          hp={getStatValue(legendaryPokemon, 'hp')}
-          experience={getStatValue(legendaryPokemon, 'experience')}
-          attack={getStatValue(legendaryPokemon, 'attack')}
-          defense={getStatValue(legendaryPokemon, 'defense')}
-          spAttack={getStatValue(legendaryPokemon, 'special-attack')}
-          spDefense={getStatValue(legendaryPokemon, 'special-defense')}
-        />
+        {legendaryPokemon && (
+          <>
+            <LegendariesSection
+              title="Legendaries"
+              img={legendaryPokemon.sprites.other['official-artwork'].front_default}
+              pokemonName={legendaryPokemon.name}
+              pokemonDescription={pokemonDescription}
+              hp={getStatValue(legendaryPokemon, 'hp')}
+              experience={getStatValue(legendaryPokemon, 'experience')}
+              attack={getStatValue(legendaryPokemon, 'attack')}
+              defense={getStatValue(legendaryPokemon, 'defense')}
+              spAttack={getStatValue(legendaryPokemon, 'special-attack')}
+              spDefense={getStatValue(legendaryPokemon, 'special-defense')}
+            />
+          </>
+        )}
       </section>
     </>
   );

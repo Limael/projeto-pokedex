@@ -4,22 +4,30 @@ import App from './App.tsx'
 import './global.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
-import { Pokedex } from './Components/Pokedex/index.js'
-import { Legendaries } from './Components/Legendaries/index.js'
+
+import { Banner } from './Components/Banner/index.tsx'
+import { Pokedex } from './Components/Pokedex/index.tsx'
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Banner />
   },
   {
-    path: "pokedex",
+    path: "/pokedex",
     element: <Pokedex />,
+    errorElement: <Banner />
   },
+
   {
-    path: "legendaries",
-    element: <Legendaries />,
+    path: "/legendaries",
+    element: <Pokedex />,
+    errorElement: <Banner />
   },
+
+
 ]);
 
 
