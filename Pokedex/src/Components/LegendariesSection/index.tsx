@@ -1,11 +1,12 @@
-import styles from './index.module.css';
-import { Progress, SimpleGrid } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
+import { Progress, SimpleGrid } from "@chakra-ui/react";
 import api from "../../api/api";
 import { CarousselCard } from "../CarousselCard";
-
 import arrowRight from '../../assets/arrowRight.svg'
 import arrowLeft from '../../assets/arrowLeft.svg'
+
+import styles from './index.module.css';
+
 export type PokemonProps = {
   id: number;
   name: string;
@@ -38,7 +39,6 @@ export type PokemonProps = {
   base_experience: number;
 };
 
-
 export type LegendariesSectionProps = {
   title: string;
   img?: string;
@@ -52,10 +52,19 @@ export type LegendariesSectionProps = {
   spDefense?: number;
 };
 
-
-export const LegendariesSection = ({ title, img, pokemonName, pokemonDescription, hp, experience, attack, defense, spAttack, spDefense }: LegendariesSectionProps) => {
+export const LegendariesSection = ({
+  title,
+  img,
+  pokemonName,
+  pokemonDescription,
+  hp,
+  experience,
+  attack,
+  defense,
+  spAttack,
+  spDefense
+}: LegendariesSectionProps) => {
   const [legendaryPokemon, setLegendaryPokemon] = useState<PokemonProps[]>([]);
-
   const carousel = useRef<HTMLDivElement>(null);
 
   const handleLeftClick = () => {
@@ -96,9 +105,7 @@ export const LegendariesSection = ({ title, img, pokemonName, pokemonDescription
           })
         );
 
-        const filteredPokemon = legendaryResults.filter(
-          (pokemon) => pokemon !== null
-        );
+        const filteredPokemon = legendaryResults.filter((pokemon) => pokemon !== null);
 
         setLegendaryPokemon(filteredPokemon);
       } catch (error) {
@@ -110,67 +117,46 @@ export const LegendariesSection = ({ title, img, pokemonName, pokemonDescription
   }, []);
 
   return (
-    <>
-      <section className={styles.section_legendaries}>
-        <h1 className={styles.title}>{title}</h1>
-        <hr className={styles.divider} />
+    <section className={styles.section_legendaries}>
+      <h1 className={styles.title}>{title}</h1>
+      <hr className={styles.divider} />
 
-        <div className={styles.legendary_information_container}>
-          <img src={img} alt="" />
+      <div className={styles.legendary_information_container}>
+        <img src={img} alt="" />
 
-          <article>
-            <h1 className={styles.legendary_name}>{pokemonName}</h1>
-            <p className={styles.legendary_description}>{pokemonDescription}</p>
-            <SimpleGrid columns={[1, null, 2, 2]} spacing={[0, null, '34px']}>
+        <article>
+          <h1 className={styles.legendary_name}>{pokemonName}</h1>
+          <p className={styles.legendary_description}>{pokemonDescription}</p>
+          <SimpleGrid columns={[1, null, 2, 2]} spacing={[0, null, '34px']} className={styles.stats_grid}>
+            {[
+              { name: 'Healthy Points', value: hp },
+              { name: 'Experience', value: experience },
+              { name: 'Attack', value: attack },
+              { name: 'Defense', value: defense },
+              { name: 'SpAttack', value: spAttack },
+              { name: 'SpDefense', value: spDefense },
+            ].map(({ name, value }) => (
+              <article key={name} className={styles.stats_container}>
+                <span className={styles.legendary_stats}>{name}</span>
+                <span><strong className={styles.legendary_stats_number}>{value}</strong></span>
+                <Progress className={styles.progress} colorScheme='yellow' value={value} />
+              </article>
+            ))}
+          </SimpleGrid>
+        </article>
+      </div>
 
-              <article className={styles.stats_container}>
-                <span className={styles.legendary_stats}>Healthy Points</span>
-                <span><strong className={styles.legendary_stats_number}>{hp}</strong></span>
-                <Progress className={styles.progress} colorScheme='yellow' value={hp} />
-              </article>
-              <article className={styles.stats_container}>
-                <span className={styles.legendary_stats}>Experience</span>
-                <span><strong className={styles.legendary_stats_number}>{experience}</strong></span>
-                <Progress className={styles.progress} colorScheme='yellow' value={experience} />
-              </article>
-              <article className={styles.stats_container}>
-                <span className={styles.legendary_stats}>Attack</span>
-                <span><strong className={styles.legendary_stats_number}>{attack}</strong></span>
-                <Progress className={styles.progress} colorScheme='yellow' value={attack} />
-              </article>
-              <article className={styles.stats_container}>
-                <span className={styles.legendary_stats}>Defense</span>
-                <span><strong className={styles.legendary_stats_number}>{defense}</strong></span>
-                <Progress className={styles.progress} colorScheme='yellow' value={defense} />
-              </article>
-              <article className={styles.stats_container}>
-                <span className={styles.legendary_stats}>SpAttack</span>
-                <span><strong className={styles.legendary_stats_number}>{spAttack}</strong></span>
-                <Progress className={styles.progress} colorScheme='yellow' value={spAttack} />
-              </article>
-              <article className={styles.stats_container}>
-                <span className={styles.legendary_stats}>SpDefense</span>
-                <span><strong className={styles.legendary_stats_number}>{spDefense}</strong></span>
-                <Progress className={styles.progress} colorScheme='yellow' value={spDefense} />
-              </article>
-
-
-            </SimpleGrid>
-          </article>
-        </div>
-
-        <div className={styles.carousel_container}>
-          <button onClick={handleLeftClick}><img src={arrowLeft} alt="" /></button>
-          <div className={styles.container}>
-            <div className={styles.carousel} ref={carousel}>
-              {legendaryPokemon.map((pokemon) => (
-                <CarousselCard key={pokemon.id} image={pokemon.sprites.other['official-artwork'].front_default} pokemonName={pokemon.name} />
-              ))}
-            </div>
+      <div className={styles.carousel_container}>
+        <button onClick={handleLeftClick}><img src={arrowLeft} alt="" /></button>
+        <div className={styles.container}>
+          <div className={styles.carousel} ref={carousel}>
+            {legendaryPokemon.map((pokemon) => (
+              <CarousselCard key={pokemon.id} image={pokemon.sprites.other['official-artwork'].front_default} pokemonName={pokemon.name} />
+            ))}
           </div>
-          <button onClick={handleRightClick}><img src={arrowRight} alt="" /></button>
         </div>
-      </section>
-    </>
+        <button onClick={handleRightClick}><img src={arrowRight} alt="" /></button>
+      </div>
+    </section>
   );
 };
