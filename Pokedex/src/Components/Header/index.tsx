@@ -18,8 +18,8 @@ export const Header = () => {
             <Link to="/"> <img className={styles.img} src={logo} alt="Logo principal do sistema" /></Link>
             <article className={styles.navbar_container}>
                 <a href="#" className={styles.navbar_item_selected} > <Link to="/">Home </Link></a>
-                <a href="#"> <Link to="/pokedex">Pokédex</Link></a>
-                <a href="#"><Link to="/legendaries">Legendaries</Link></a>
+                <a href="#"> <Link to="pokedex">Pokédex</Link></a>
+                <a href="#"><Link to="legendaries">Legendaries</Link></a>
                 <a href="https://pokeapi.co/docs/v2#pokemon-section">Documentation</a>
             </article>
 
@@ -33,21 +33,21 @@ export const Header = () => {
                     <MenuList>
                         <MenuItem >
                             <a href="#">
-                                <span>Home</span>
+                                <Link to="/"><span>Home</span> </Link>
                             </a>
                         </MenuItem>
                         <MenuItem >
                             <a href="#">
-                                <span>Pokedéx</span>
+                                <Link to="pokedex">  <span>Pokedéx</span> </Link>
                             </a>
                         </MenuItem>
                         <MenuItem >
                             <a href="#">
-                                <span>Legendaries</span>
+                                <Link to="legendaries"><span>Legendaries</span></Link>
                             </a>
                         </MenuItem>
                         <MenuItem >
-                            <a href="#">
+                            <a href="https://pokeapi.co/docs/v2#pokemon-section">
                                 <span>Documentation</span>
                             </a>
                         </MenuItem>

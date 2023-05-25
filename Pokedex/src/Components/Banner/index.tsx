@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import banner from '../../assets/banner.png'
 import banner_complete from '../../assets/BannerComplete.png'
 import { Footer } from '../Footer'
@@ -7,7 +8,7 @@ import styles from './index.module.css'
 export const Banner = () => {
     return (
         <>
-    <Header/>
+            <Header />
 
             <section className={styles.section_container}>
                 <img className={styles.image_responsive} src={banner_complete} alt="pikachu" />
@@ -22,7 +23,7 @@ export const Banner = () => {
                         You can know the type of Pokemon, its strengths, disadvantages and abilities
                     </h2>
                     <button className={styles.button}>
-                        See pokemons
+                        <Link to="pokedex">   See pokemons </ Link >
                     </button>
 
                 </article>
