@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container .carousel {
+    max-width: 56vw;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.container .carousel::-webkit-scrollbar {
+    display: none;
+}
