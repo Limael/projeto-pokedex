@@ -1,3 +1,5 @@
+import styles from './index.module.css';
+
 import pokeball from '../../assets/pokeball.svg'
 
 export type LegendaryCardProps = {
@@ -8,11 +10,11 @@ export type LegendaryCardProps = {
 export const CarousselCard = ({ image, pokemonName }: LegendaryCardProps) => {
 
   return (
-    <main>
-      <img src={image} alt="Pokemon lendário" />
-      <div>
-        <section>
-          <h1>{pokemonName}</h1>
+    <main className={styles.legendary_card}>
+      <img className={styles.img} src={image} alt="Pokemon lendário" />
+      <div className={styles.name_card}>
+        <section className={styles.legendary_card_information}>
+          <h1 className={styles.legendary_name}>{pokemonName}</h1>
           <img src={pokeball} alt="Ultra ball" />
         </section>
       </div>

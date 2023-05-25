@@ -126,32 +126,32 @@ export const LegendariesSection = ({ title, img, pokemonName, pokemonDescription
               <article className={styles.stats_container}>
                 <span className={styles.legendary_stats}>Healthy Points</span>
                 <span><strong className={styles.legendary_stats_number}>{hp}</strong></span>
-                <Progress className={styles.progresso} colorScheme='yellow' value={hp} />
+                <Progress className={styles.progress} colorScheme='yellow' value={hp} />
               </article>
               <article className={styles.stats_container}>
                 <span className={styles.legendary_stats}>Experience</span>
                 <span><strong className={styles.legendary_stats_number}>{experience}</strong></span>
-                <Progress className={styles.progresso} colorScheme='yellow' value={experience} />
+                <Progress className={styles.progress} colorScheme='yellow' value={experience} />
               </article>
               <article className={styles.stats_container}>
                 <span className={styles.legendary_stats}>Attack</span>
                 <span><strong className={styles.legendary_stats_number}>{attack}</strong></span>
-                <Progress className={styles.progresso} colorScheme='yellow' value={attack} />
+                <Progress className={styles.progress} colorScheme='yellow' value={attack} />
               </article>
               <article className={styles.stats_container}>
                 <span className={styles.legendary_stats}>Defense</span>
                 <span><strong className={styles.legendary_stats_number}>{defense}</strong></span>
-                <Progress className={styles.progresso} colorScheme='yellow' value={defense} />
+                <Progress className={styles.progress} colorScheme='yellow' value={defense} />
               </article>
               <article className={styles.stats_container}>
                 <span className={styles.legendary_stats}>SpAttack</span>
                 <span><strong className={styles.legendary_stats_number}>{spAttack}</strong></span>
-                <Progress className={styles.progresso} colorScheme='yellow' value={spAttack} />
+                <Progress className={styles.progress} colorScheme='yellow' value={spAttack} />
               </article>
               <article className={styles.stats_container}>
                 <span className={styles.legendary_stats}>SpDefense</span>
                 <span><strong className={styles.legendary_stats_number}>{spDefense}</strong></span>
-                <Progress className={styles.progresso} colorScheme='yellow' value={spDefense} />
+                <Progress className={styles.progress} colorScheme='yellow' value={spDefense} />
               </article>
 
 
@@ -159,11 +159,10 @@ export const LegendariesSection = ({ title, img, pokemonName, pokemonDescription
           </article>
         </div>
 
-        <div>
+        <div className={styles.carousel_container}>
           <button onClick={handleLeftClick}><img src={arrowLeft} alt="" /></button>
-          <div>
-            <div ref={carousel}>
-              {/* Renderizar os Pokémon lendários no carrossel */}
+          <div className={styles.container}>
+            <div className={styles.carousel} ref={carousel}>
               {legendaryPokemon.map((pokemon) => (
                 <CarousselCard key={pokemon.id} image={pokemon.sprites.other['official-artwork'].front_default} pokemonName={pokemon.name} />
               ))}

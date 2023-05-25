@@ -4,10 +4,13 @@
 }
 
 .container .carousel {
-    max-width: 56vw;
+    max-width: 66vw;
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
+    gap: 42px;
+
+
 }
 
 .container .carousel::-webkit-scrollbar {
@@ -95,7 +98,12 @@
     flex-direction: column;
 }
 
-.progresso {
+.progress {
     border-radius: 8px;
     height: 7px !important;
+}
+
+.carousel_container {
+    display: flex;
+    gap: 20px;
 }
