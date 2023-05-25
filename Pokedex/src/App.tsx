@@ -1,5 +1,5 @@
 
-import { Legendaries } from './Components/Legendaries'
+import { Banner } from './Components/Banner/index'
 
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
 
-      <Legendaries />
+      <Banner />
 
     </>
   )

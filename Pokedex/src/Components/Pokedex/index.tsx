@@ -22,15 +22,11 @@ export const Pokedex = () => {
   const [offset, setOffset] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-
   const [selectedPokemon, setSelectedPokemon] = useState<PokemonTypeProps | null>(null);
-
-
-
   const [searchValue, setSearchValue] = useState('')
-  useEffect(() => {
-    const fetchPokemonList = async () => {
+
+
+    const fetchPokemonSearch = async () => {
       if (searchValue.trim() === '') {
         setPokemonSearchList([])
         return;
@@ -67,33 +63,6 @@ export const Pokedex = () => {
         setLoading(false);
       }
     };
-
-    fetchPokemonList();
-  }, [searchValue]);
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
-  };
-
-
-  /*     const handleTypeSelect = (type: string) => {
-          setSelectedTypes((prevSelectedTypes) => {
-              if (prevSelectedTypes.includes(type)) {
-                  return prevSelectedTypes.filter((selectedType) => selectedType !== type);
-              } else {
-                  return [...prevSelectedTypes, type];
-              }
-          });
-      };
-  
-      useEffect(() => {
-          const lastSelectedType = selectedTypes[selectedTypes.length - 1];
-          console.log('Último tipo selecionado:', lastSelectedType);
-      }, [selectedTypes]);
-  
-   */
-
-  useEffect(() => {
     const fetchPokemonTypes = async () => {
       try {
         const response = await api.get('/type');
@@ -101,33 +70,7 @@ export const Pokedex = () => {
       } catch (error) {
         console.log(error);
       }
-    };
-
-    fetchPokemonTypes();
-  }, []);
-
-  /* 
-      useEffect(() => {
-          const fetchPokemonTypeName = async () => {
-              try {
-                  const lastSelectedType = selectedTypes[selectedTypes.length - 1];
-                  const response = await api.get(`/type/${lastSelectedType}`);
-                  setFilteredList(response.data.pokemon);
-              } catch (error) {
-                  console.log(error);
-              }
-          };
-  
-          fetchPokemonTypeName();
-      }, [selectedTypes]); */
-
-
-
-
-
-
-
-  useEffect(() => {
+    }; 
     const fetchPokemonList = async () => {
       setLoading(true);
 
@@ -173,6 +116,25 @@ export const Pokedex = () => {
       }
     };
 
+  useEffect(() => {
+    fetchPokemonSearch();
+  },[searchValue]);
+
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
+ 
+
+  useEffect(() => {
+    fetchPokemonTypes();
+  }, []);
+  
+
+
+  useEffect(() => {
+ 
+
     fetchPokemonList();
   }, [offset]);
 
@@ -211,8 +173,6 @@ export const Pokedex = () => {
                 {pokemonTypes.map((type) => (
                   <MenuItem key={type.name}>
                     <Checkbox
-                    /*                 isChecked={selectedTypes.includes(type.name)}
-                                    onChange={() => handleTypeSelect(type.name)} */
                     >
                       {type.name}
                     </Checkbox>
